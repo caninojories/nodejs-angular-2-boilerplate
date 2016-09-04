@@ -1,0 +1,14 @@
+{
+  "name": "nodejs-angular-2",
+  "version": "0.0.1",
+  "description": "NodeJS/Angular-2 Boilerplate",
+  "author": "Jo-Ries P. Canino",
+  "email": "canino_jories@hotmail.com",
+  "private": "true",
+  "license": "MIT",
+  "dependencies": {
+    "oboe": "^2.1.2",
+    "moment": "^2.13.0",
+    "bootstrap-less": "^3.3.4"
+  }
+}

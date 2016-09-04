@@ -1,0 +1,23 @@
+##
+# Node and Logs
+#
+node_modules/
+bower/
+*.log
+npm*
+
+##
+# Typings and Apps
+#
+typings/
+app/**/*.js
+app/**/*.map
+
+##
+# Other
+#
+.DS_Store
+app/**/*.css
+app/**/min.*
+less/
+app/shared/config.ts
