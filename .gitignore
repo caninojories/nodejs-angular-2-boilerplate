@@ -19,5 +19,6 @@ app/**/*.map
 .DS_Store
 app/**/*.css
 app/**/min.*
+assets/js/min.*
 less/
 app/shared/config.ts

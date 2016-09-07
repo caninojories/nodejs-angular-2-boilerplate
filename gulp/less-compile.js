@@ -47,7 +47,7 @@
             'display-property-grouping': false,
             'adjoining-classes': false
             }))
-            .pipe(require.$.csslint.reporter())
+            .on('error', require.handleErrors )
             .pipe(require.$.cleanCss({compatibility: 'ie8'}))
             .on('error', require.handleErrors )
             .pipe(require.gulp.dest(dest))
