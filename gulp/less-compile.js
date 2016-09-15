@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var LessPluginAutoPrefix  = require('less-plugin-autoprefix'),
+  let LessPluginAutoPrefix  = require('less-plugin-autoprefix'),
       autoprefix            = new LessPluginAutoPrefix({ browsers: ["last 2 versions"] });
 
   let glob = require('glob');
@@ -13,6 +13,10 @@
 
         glob(file, {}, function (er, files) {
           files.forEach(function(item) {
+            var lastOccurence = item.lastIndexOf('/');
+            var pathPosition  = item.substr(0, lastOccurence);
+            var name          = item.substr(lastOccurence + 1, file.length);
+
             let position = item.lastIndexOf('/');
             let dest     = item.substr(0, position + 1);
 
@@ -48,8 +52,9 @@
             'adjoining-classes': false
             }))
             .on('error', require.handleErrors )
-            .pipe(require.$.cleanCss({compatibility: 'ie8'}))
+            .pipe(require.args.env === 'DEV' ? require.$.sourcemaps.init() : require.$.cleanCss({compatibility: 'ie8'}))
             .on('error', require.handleErrors )
+            .pipe(require.$.rename(require.args.env === 'DEV' ? name.replace('less', 'css') : 'min.' + name.replace('less', 'css')))
             .pipe(require.gulp.dest(dest))
           });
         })

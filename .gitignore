@@ -20,5 +20,6 @@ app/**/*.map
 app/**/*.css
 app/**/min.*
 assets/js/min.*
+assets/css/*.css
 less/
 app/shared/config.ts
