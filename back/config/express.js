@@ -5,7 +5,12 @@
   module.exports = function(app) {
     let root = io.path.normalize(__dirname + '/../../');
 
-    app.set('views', root + 'dist');
+    if (process.env.NODE_ENV === 'production' || io.args.env === 'PRODUCTION') {
+      app.set('views', root + 'dist');
+    } else {
+      app.set('views', root + 'app');
+    }
+
     app.set('view engine', 'ejs');
     app.engine('html', require('ejs').renderFile);
     app.set('x-powered-by', false);
