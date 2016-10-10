@@ -9,8 +9,8 @@
   });
 
   router.get('/', io.xPoweredBy, function(req, res) {
-    if (process.env.NODE_ENV === 'production') {
-      res.render('server.html')
+    if (process.env.NODE_ENV === 'PRODUCTION' || io.args.env === 'PRODUCTION') {
+      res.render('index.html')
     } else {
       res.render('index.html')
     }

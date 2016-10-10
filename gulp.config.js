@@ -8,7 +8,7 @@
     /*
      * wiredep and bower settings
      */
-   let version   = '?v=0.0.1'
+   let version = ''
    let bower = {
      json : require('./bower.json'),
      ignorePath: '../bower',

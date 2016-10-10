@@ -5,7 +5,7 @@
   module.exports = function(app) {
     let root = io.path.normalize(__dirname + '/../../');
 
-    app.set('views', root + 'app');
+    app.set('views', root + 'dist');
     app.set('view engine', 'ejs');
     app.engine('html', require('ejs').renderFile);
     app.set('x-powered-by', false);
@@ -32,7 +32,7 @@
       }
     }));
 
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === 'production' || io.args.env === 'PRODUCTION') {
       app.use('/app', io.serveStatic(root + 'app', {
         maxAge: '1d',
         etag: false,
@@ -55,6 +55,14 @@
         }
       }));
       app.use('/assets', io.serveStatic(root + 'assets', {
+        maxAge: '1d',
+        etag: false,
+        setHeaders: function (res, path, stat) {
+          res.set('x-timestamp', Date.now());
+        }
+      }));
+
+      app.use('/assets', io.serveStatic(root + 'dist/assets', {
         maxAge: '1d',
         etag: false,
         setHeaders: function (res, path, stat) {

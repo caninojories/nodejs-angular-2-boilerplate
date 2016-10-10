@@ -8,7 +8,7 @@
     'app':                        '/app', // 'dist',
     '@angular':                   '/node_modules/@angular',
     'rxjs':                       '/node_modules/rxjs',
-    'ng2-translate':              '/node_modules/ng2-translate'
+    'ng2-translate':              '/node_modules/ng2-translate/bundles'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
