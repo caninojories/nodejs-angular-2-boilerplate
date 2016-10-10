@@ -31,6 +31,8 @@
   require('./gulp/settings')(module);
   require('./gulp/uglify')(module);
   require('./gulp/uglify-html')(module);
-  require('./gulp/useref')(module);
   require('./gulp/concat')(module);
+
+  let Useref = require('./gulp/useref');
+  let useref = new Useref.CombineAssets();
 }());

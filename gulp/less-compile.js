@@ -13,9 +13,9 @@
 
         glob(file, {}, function (er, files) {
           files.forEach(function(item) {
-            var lastOccurence = item.lastIndexOf('/');
-            var pathPosition  = item.substr(0, lastOccurence);
-            var name          = item.substr(lastOccurence + 1, file.length);
+            let lastOccurence = item.lastIndexOf('/');
+            let pathPosition  = item.substr(0, lastOccurence);
+            let name          = item.substr(lastOccurence + 1, file.length);
 
             let position = item.lastIndexOf('/');
             let dest     = item.substr(0, position + 1);

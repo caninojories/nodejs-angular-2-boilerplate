@@ -23,3 +23,8 @@ assets/js/min.*
 assets/css/*.css
 less/
 app/shared/config.ts
+gulp/**/*.js.map
+gulp/modules.js
+gulp/modules.js.map
+gulp/useref.js
+gulp/useref.js.map

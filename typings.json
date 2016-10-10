@@ -1,6 +1,15 @@
 {
   "globalDependencies": {
-    "core-js": "registry:dt/core-js#0.0.0+20160725163759"
+    "core-js": "registry:dt/core-js#0.0.0+20160914114559",
+    "gulp": "registry:dt/gulp#3.8.0+20160907112908",
+    "gulp-autoprefixer": "registry:dt/gulp-autoprefixer#0.0.0+20160316155526",
+    "gulp-load-plugins": "registry:dt/gulp-load-plugins#0.0.0+20160316155526",
+    "gulp-useref": "registry:dt/gulp-useref#3.0.0+20160316155526",
+    "lazypipe": "registry:dt/lazypipe#0.0.0+20160316155526",
+    "node": "registry:dt/node#6.0.0+20161008175459",
+    "orchestrator": "registry:dt/orchestrator#0.0.0+20160316155526",
+    "q": "registry:dt/q#0.0.0+20161004185634",
+    "vinyl": "registry:dt/vinyl#1.2.0+20160924121322"
   },
   "compilerOptions": {
     "outDir": "build",
