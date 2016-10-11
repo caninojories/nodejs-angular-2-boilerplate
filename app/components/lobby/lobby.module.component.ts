@@ -13,20 +13,21 @@ import {
 import {
   LobbyMainComponent
 } from './lobby.main.component';
+import {
+  SharedModule
+} from '../commons/shared.component';
 
 import {lobbyRouting } from './lobby.routing.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
+    SharedModule,
     lobbyRouting
   ],
   declarations: [
     LobbyComponent,
     LobbyMainComponent
   ],
-  providers: [
-  ]
+  providers: []
 })
 export class LobbyModule {}

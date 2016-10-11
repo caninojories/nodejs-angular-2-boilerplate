@@ -27,6 +27,9 @@ import {
 import {
   PageNotFoundComponent
 } from '../app/components/404/page.not.found.component';
+import {
+  SharedModule
+} from '../app/components/commons/shared.component';
 
 /* Shared */
 import {
@@ -51,7 +54,7 @@ import {
       useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
       deps: [Http]
     }),
-    FormsModule,
+    SharedModule,
     rootRouting,
     LobbyModule
   ],
