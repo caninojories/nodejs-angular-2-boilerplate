@@ -1,38 +1,40 @@
-(function() {
-  'use strict';
-
-  let path    = require('path'),
-      args    = require('yargs').argv,
-      root    = path.normalize(__dirname + '/../../');
-
-  module.exports = {
-    root              : root,
-
-    args              : args,
-    bodyParser        : require('body-parser'),
-    chalk             : require('chalk'),
-    cluster           : require('cluster'),
-    compression       : require('compression'),
-    express           : require('express'),
-    favicon           : require('serve-favicon'),
-    fs                : require('fs'),
-    jwt               : require('jwt-simple'),
-    morgan            : require('morgan'),
-    methodOverride    : require('method-override'),
-    numCPUs           : require('os').cpus().length,
-    path              : require('path'),
-    serveStatic       : require('serve-static'),
-    url               : require('url'),
-    winston           : require('winston'),
-    _                 : require('lodash'),
-    logger            : require('./winston'),
-
-    port              : process.env.PORT || args.port || 8116,
-    environment       : process.env.NODE_ENV || 'development',
-    faviconPath       : 'app/favicon.ico',
-    apiVersion        : '/api_v1/',
-
-    /*Services*/
-    xPoweredBy        : require(root + 'back/services/xPoweredBy'),
-  };
+"use strict";
+var path = require('path');
+var args = require('yargs');
+var bodyparser = require('body-parser');
+var chalk = require('chalk');
+var compression = require('compression');
+var express = require('express');
+var fs = require('fs');
+var jwtsimple = require('jwt-simple');
+var methodoverride = require('method-override');
+var moment = require('moment');
+var morgan = require('morgan');
+var servestatic = require('serve-static');
+var url = require('url');
+var winston = require('winston');
+var Modules = (function () {
+    function Modules() {
+    }
+    Modules.get = function () {
+        return {
+            args: args.argv,
+            bodyparser: bodyparser,
+            chalk: chalk,
+            compression: compression,
+            express: express,
+            fs: fs,
+            path: path,
+            jwtsimple: jwtsimple,
+            methodoverride: methodoverride,
+            moment: moment,
+            morgan: morgan,
+            servestatic: servestatic,
+            url: url,
+            winston: winston
+        };
+    };
+    return Modules;
 }());
+exports.Modules = Modules;
+//# sourceMappingURL=modules.js.map

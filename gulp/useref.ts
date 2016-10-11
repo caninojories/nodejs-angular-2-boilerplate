@@ -1,10 +1,13 @@
 import {
   Modules
 } from './modules';
+import {
+  Logger
+} from './utilities/logger';
 
 let config = require('./../gulp.config')();
 
-export class CombineAssets {
+export class Useref  {
   constructor() {
     this.init();
   }
@@ -14,6 +17,8 @@ export class CombineAssets {
     .get()
     .gulp
     .task('useref', _ => {
+      new Logger('Running useref');
+
       return Modules
       .get()
       .gulp

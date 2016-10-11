@@ -1,8 +1,10 @@
-(function() {
-  'use strict';
+declare let Promise;
+export class LooPromise {
+  constructor() {
+  }
 
-  module.exports = (condition, action) => {
-    let resolver = Promise.defer();
+  init(condition, action) : Promise<any> {
+		let resolver = Promise.defer();
     let loop = _ => {
       if (!condition()) {
         return resolver.resolve();
@@ -14,6 +16,7 @@
     };
 
     process.nextTick(loop);
+
     return resolver.promise;
-  };
-}());
+  }
+}

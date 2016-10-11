@@ -1,15 +1,17 @@
 "use strict";
 var modules_1 = require('./modules');
+var logger_1 = require('./utilities/logger');
 var config = require('./../gulp.config')();
-var CombineAssets = (function () {
-    function CombineAssets() {
+var Useref = (function () {
+    function Useref() {
         this.init();
     }
-    CombineAssets.prototype.init = function () {
+    Useref.prototype.init = function () {
         modules_1.Modules
             .get()
             .gulp
             .task('useref', function (_) {
+            new logger_1.Logger('Running useref');
             return modules_1.Modules
                 .get()
                 .gulp
@@ -26,7 +28,7 @@ var CombineAssets = (function () {
                 .pipe(modules_1.Modules.get().gulp.dest('dist'));
         });
     };
-    return CombineAssets;
+    return Useref;
 }());
-exports.CombineAssets = CombineAssets;
+exports.Useref = Useref;
 //# sourceMappingURL=useref.js.map

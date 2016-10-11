@@ -1,5 +1,5 @@
 import {
-  NgModule,
+  NgModule
 } from '@angular/core';
 import {
   RouterOutlet
@@ -66,5 +66,4 @@ import {
   ],
   bootstrap: [AppComponent]
 })
-export class mainModule {
-}
+export class mainModule {}

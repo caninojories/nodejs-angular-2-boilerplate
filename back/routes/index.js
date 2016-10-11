@@ -1,20 +1,12 @@
-(function() {
-  'use strict';
-
-  let router = io.express.Router();
-
-  router.use(function timeLog(req, res, next) {
+"use strict";
+var express = require('express');
+var indexRouter = express.Router();
+indexRouter.use(function timeLog(req, res, next) {
     console.log('Time: ', Date.now());
     next();
-  });
-
-  router.get('/', io.xPoweredBy, function(req, res) {
-    if (process.env.NODE_ENV === 'PRODUCTION' || io.args.env === 'PRODUCTION') {
-      res.render('index.html')
-    } else {
-      res.render('index.html')
-    }
-  });
-
-  module.exports = router;
-})();
+});
+indexRouter.get('/', function (req, res) {
+    res.render('index.html');
+});
+module.exports = indexRouter;
+//# sourceMappingURL=index.js.map

@@ -1,151 +1,140 @@
-(function() {
-  'use strict';
-
-  let args        = require('yargs').argv;
-  let loopPromise = require('./loopPromise');
-
-
-  let globalSpwan = null;
-  let globalChildProcess = require('child_process').spawn;
-  /**
-   * Install global here
-   */
-  let global        = ['nodemon', 'typings', 'typescript', 'bower', 'pm2', 'gulp']
-  let globalCounter = 0;
-
-  if (args.compile) {
-    GENERAL();
-
-    return;
-  }
-
-  loopPromise(function() {
-    return global.length > globalCounter;
-  }, function() {
-    return new Promise((resolve, reject) => {
-      globalSpwan = globalChildProcess('npm', ['install', global[globalCounter], '-g']);
-
-      globalSpwan.stdout.on('data', (data) => {
-        console.log(`stdout: ${data}`);
-      });
-
-      globalSpwan.stderr.on('data', (data) => {
-        console.log(`stderr: ${data}`);
-      });
-
-      globalSpwan.on('close', (code) => {
-        globalSpwan.kill();
-        console.log(`child process exited with code ${code}`);
-        globalCounter++;
-        resolve();
-      });
-    })
-    .then(response => {
-      console.log('Finish Installing ' + global[globalCounter - 1]);
-    })
-  })
-  .then(response => {
-    return GULPCOMMANDS();
-  })
-  .then(response => {
-    return GENERAL();
-  })
-  .then(response => {
-    console.log("DONEEEEEEEEEEEEEEEEEEEEEEEEE");
-  });
-
-
-  function GULPCOMMANDS() {
-    let gulpSpwan         = null;
-    let gulpChildProcess  = require('child_process').spawn;
-    let settings          = ['settings'];
-    let settingsCounter   = 0;
-
-    return new Promise((rootResolve, rootReject) => {
-      loopPromise(function() {
-        return settings.length > settingsCounter;
-      }, function() {
-        return new Promise((resolve, reject) => {
-          gulpSpwan = gulpChildProcess('gulp', [settings[settingsCounter], '--env=' + args.env]);
-
-          gulpSpwan.stdout.on('data', (data) => {
-             console.log(`stdout: ${data}`);
-           });
-
-           gulpSpwan.stderr.on('data', (data) => {
-             console.log(`stderr: ${data}`);
-           });
-
-           gulpSpwan.on('close', (code) => {
-             gulpSpwan.kill();
-             settingsCounter++;
-             console.log(`child process exited with code ${code}`);
-             resolve();
-           });
+"use strict";
+var loopromise_1 = require('./loopromise');
+var modules_1 = require('../config/modules');
+var logger_1 = require('./logger');
+var Deploy = (function () {
+    function Deploy() {
+        this._modules = modules_1.Modules.get();
+        this._globalSpwan = null;
+        this._globalChildProcess = require('child_process').spawn;
+        /**
+         * Install global here
+         */
+        this._global = ['nodemon', 'typings', 'typescript', 'bower', 'pm2', 'gulp'];
+        this._globalCounter = 0;
+        this.init();
+    }
+    Deploy.prototype.init = function () {
+        var _this = this;
+        if (this._modules.args.compile) {
+            this.general();
+            return;
+        }
+        var self = this;
+        new loopromise_1.LooPromise().init(function () {
+            return self._global.length > self._globalCounter;
+        }, function () {
+            return new Promise(function (resolve, reject) {
+                new logger_1.Logger('deploy.ts[back/services][39]', 'Installing ' + self._global[self._globalCounter], 'info');
+                self._globalSpwan = self._globalChildProcess('npm', ['install', self._global[self._globalCounter], '-g']);
+                self._globalSpwan.stdout.on('data', function (data) {
+                    console.log("stdout: " + data);
+                });
+                self._globalSpwan.stderr.on('data', function (data) {
+                    console.log("stderr: " + data);
+                });
+                self._globalSpwan.on('close', function (code) {
+                    new logger_1.Logger('deploy.ts[back/services][54]', 'Successfully Installed ' + self._global[self._globalCounter], 'info');
+                    self._globalSpwan.kill();
+                    self._globalCounter++;
+                    resolve();
+                });
+            });
         })
-        .then(response => {
-          console.log('Finish running the command ' + settings[settingsCounter - 1]);
+            .then(function (response) {
+            return _this.gulpcommands();
         })
-      })
-      .then(response => {
-        rootResolve();
-      });
-    });
-  }
-
-  function GENERAL() {
-    let generalSpawn = null;
-    let generalSpawnChildProcess = require('child_process').spawn;
-    let general = [{
-      command : 'tsc'
-    }, {
-      command: 'gulp',
-      args: 'less-compile-and-uglify'
-    }, {
-      command: 'gulp',
-      args: 'uglify-assets-assets-js'
-    }, {
-      command: 'gulp',
-      args: 'uglify-assets-app-ts'
-    }, {
-      command: 'gulp',
-      args: 'uglify-html'
-    }];
-    let generalCounter = 0;
-
-    return new Promise((rootResolve, rootReject) => {
-      loopPromise(function() {
-        return general.length > generalCounter;
-      }, function() {
-        return new Promise((resolve, reject) => {
-          if (general[generalCounter].args) {
-            generalSpawn = generalSpawnChildProcess(general[generalCounter].command, [general[generalCounter].args]);
-          } else {
-            generalSpawn = generalSpawnChildProcess(general[generalCounter].command);
-          }
-
-          generalSpawn.stdout.on('data', (data) => {
-             console.log(`stdout: ${data}`);
-           });
-
-           generalSpawn.stderr.on('data', (data) => {
-             console.log(`stderr: ${data}`);
-           });
-
-           generalSpawn.on('close', (code) => {
-             generalSpawn.kill();
-             generalCounter++;
-             console.log(`child process exited with code ${code}`);
-             resolve();
-           });
+            .then(function (response) {
+            return _this.general();
         })
-        .then(response => {
-          console.log('Finish running the command ' + general[generalCounter - 1].command + ' with option ' + general[generalCounter - 1].args)
-        })
-      })
-      .then(response => {
-        rootResolve();
-      })
-    });
-  }
+            .then(function (response) {
+            new logger_1.Logger('deploy.ts[back/services][66]', 'Success', 'info');
+        });
+    };
+    Deploy.prototype.gulpcommands = function () {
+        var gulpSpwan = null;
+        var gulpChildProcess = require('child_process').spawn;
+        var settings = ['settings'];
+        var settingsCounter = 0;
+        var self = this;
+        return new Promise(function (rootResolve, rootReject) {
+            new loopromise_1.LooPromise().init(function () {
+                return settings.length > settingsCounter;
+            }, function () {
+                return new Promise(function (resolve, reject) {
+                    new logger_1.Logger('deploy.ts[back/services][85]', 'Running the command ' + settings[settingsCounter], 'info');
+                    gulpSpwan = gulpChildProcess('gulp', [settings[settingsCounter], '--env=' + self._modules.args.env]);
+                    gulpSpwan.stdout.on('data', function (data) {
+                        console.log("stdout: " + data);
+                    });
+                    gulpSpwan.stderr.on('data', function (data) {
+                        console.log("stderr: " + data);
+                    });
+                    gulpSpwan.on('close', function (code) {
+                        new logger_1.Logger('deploy.ts[back/services][100]', 'Successfully run the command ' + settings[settingsCounter], 'info');
+                        gulpSpwan.kill();
+                        settingsCounter++;
+                        resolve();
+                    });
+                });
+            })
+                .then(function (response) {
+                rootResolve();
+            });
+        });
+    };
+    Deploy.prototype.general = function () {
+        var generalSpawn = null;
+        var generalCounter = 0;
+        var generalSpawnChildProcess = require('child_process').spawn;
+        var general = [{
+                command: 'tsc'
+            }, {
+                command: 'gulp',
+                args: 'less-compile-and-minify'
+            }, {
+                command: 'gulp',
+                args: 'uglify-assets-assets-js'
+            }, {
+                command: 'gulp',
+                args: 'uglify-assets-app-ts'
+            }, {
+                command: 'gulp',
+                args: 'uglify-html'
+            }];
+        return new Promise(function (rootResolve, rootReject) {
+            new loopromise_1.LooPromise().init(function () {
+                return general.length > generalCounter;
+            }, function () {
+                return new Promise(function (resolve, reject) {
+                    if (general[generalCounter].args) {
+                        generalSpawn = generalSpawnChildProcess(general[generalCounter].command, [general[generalCounter].args]);
+                    }
+                    else {
+                        generalSpawn = generalSpawnChildProcess(general[generalCounter].command);
+                    }
+                    new logger_1.Logger('deploy.ts[back/services][143]', ('Running the command ' + general[generalCounter].command + (general[generalCounter].args ? ' ' + general[generalCounter].args : '')), 'info');
+                    generalSpawn.stdout.on('data', function (data) {
+                        console.log("stdout: " + data);
+                    });
+                    generalSpawn.stderr.on('data', function (data) {
+                        console.log("stderr: " + data);
+                    });
+                    generalSpawn.on('close', function (code) {
+                        new logger_1.Logger('deploy.ts[back/services][157]', ('Successfully run the command ' + general[generalCounter].command + (general[generalCounter].args ? ' with option ' + general[generalCounter - 1].args : '')), 'info');
+                        generalSpawn.kill();
+                        generalCounter++;
+                        resolve();
+                    });
+                });
+            })
+                .then(function (response) {
+                rootResolve();
+            });
+        });
+    };
+    return Deploy;
 }());
+exports.Deploy = Deploy;
+new Deploy();
+//# sourceMappingURL=deploy.js.map

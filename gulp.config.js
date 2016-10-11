@@ -33,7 +33,7 @@
        root + '/assets/**/*.js'
      ],
      assetsAppTS : [
-       root + '/app/**/*.js',
+       root + '/app/**/*.js'
      ],
      css    : [
        'assets/css/bootstrap.css',

@@ -36,7 +36,7 @@
   if (!io.args.mongoRun) {
     return;
   }
-  
+
   process.on('SIGINT', function() {
     io.mongoose.connection.close(function () {
       console.log('Mongoose disconnected on app termination');
