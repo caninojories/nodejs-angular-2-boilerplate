@@ -10,8 +10,6 @@ import {
 } from '../components/404/page.not.found.component';
 
 const appRoutes: Routes = [{
-  path: '', component: IndexComponent
-}, {
   path: '**',
   component: PageNotFoundComponent
 }];

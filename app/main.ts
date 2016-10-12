@@ -22,9 +22,6 @@ import {
   AppComponent
 } from './app.component';
 import {
-  IndexComponent
-} from '../app/components/index/index.component';
-import {
   PageNotFoundComponent
 } from '../app/components/404/page.not.found.component';
 import {
@@ -45,6 +42,10 @@ import {
 import {
   LobbyModule
 } from './components/lobby/lobby.module.component';
+/*module*/
+import {
+  IndexModule
+} from './components/index/index.module.component';
 
 @NgModule({
   imports: [
@@ -56,12 +57,12 @@ import {
     }),
     SharedModule,
     rootRouting,
+    IndexModule,
     LobbyModule
   ],
   exports: [TranslateModule],
   declarations: [
     AppComponent,
-    IndexComponent,
     PageNotFoundComponent
   ],
   providers: [
