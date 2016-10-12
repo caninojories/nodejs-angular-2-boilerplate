@@ -6,8 +6,8 @@
     "app-requirements": "npm run global && npm run required",
     "global": "npm install nodemon -g && npm install bower -g && npm install gulp -g && npm install typings -g && npm install typescript -g && npm install pm2 -g",
     "required": "typings install && npm install && bower install",
-    "dev-compile": "gulp settings && tsc && gulp dev-compile && tsc",
-    "prod-compile": "gulp settings && tsc && gulp prod-compile && tsc",
+    "dev-compile": "tsc 2>/dev/null && gulp settings && tsc && gulp dev-compile && tsc",
+    "prod-compile": "tsc 2>/dev/null && gulp settings && tsc && gulp prod-compile && tsc",
     "app": "pm2 start back/app.server.js -o ~/LOGS/.appoutput -e ~/LOGS/.apperror --name APP -i",
     "useforwindowcompilation": "",
     "windows-compile": "gulp less-compile-and-minify && gulp assetsJs && gulp appJs && gulp html-min && tsc"

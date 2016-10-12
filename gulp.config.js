@@ -30,7 +30,8 @@
        root + '/bower/**/*.js'
      ],
      assetsJS     : [
-       root + '/assets/**/*.js'
+       root + '/assets/**/*.js',
+       root + '/node_modules/rxjs/**/*.js'
      ],
      assetsAppTS : [
        root + '/app/**/*.js'

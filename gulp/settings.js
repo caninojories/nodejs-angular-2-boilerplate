@@ -28,8 +28,13 @@ var Settings = (function () {
                 '"ENV": "' + env + '",' +
                 '"SOCKETSERVERPORT": "' + process.env.LIVEDEALDERSOCKETSERVERPORT + '",' +
                 '"SOCKETSERVER": "' + process.env.LIVEDEALDERSOCKETSERVER + '"}', 'utf8');
-            self._modules.fs.mkdir('less', function () {
-                self._modules.fs.writeFile('less/app.less', "\n          /**\n           * for override less configuration\n           */\n\t\t\t\t", 'utf8');
+            /* check if app.less is exist */
+            self._modules.fs.exists('less/app.less', function (exist) {
+                if (!exist) {
+                    self._modules.fs.mkdir('less', function () {
+                        self._modules.fs.writeFile('less/app.less', "\n              /**\n               * for override less configuration\n               */\n            ", 'utf8');
+                    });
+                }
             });
         });
     };

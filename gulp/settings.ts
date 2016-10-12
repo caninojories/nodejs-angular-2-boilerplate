@@ -35,20 +35,25 @@ export class Settings {
 
 			self._modules.fs.writeFile('app/shared/config.ts',
 			'export let CONFIG = {' +
-				'"HOSTNAME": "' + process.env.LIVEDEALDERFRONTHOSTNAME + '",' +
-				'"MIN": "' + min + '",' +
-        '"ENV": "' + env + '",' +
-        '"SOCKETSERVERPORT": "' + process.env.LIVEDEALDERSOCKETSERVERPORT + '",' +
-				'"SOCKETSERVER": "' + process.env.LIVEDEALDERSOCKETSERVER + '"}'
-				, 'utf8');
+			'"HOSTNAME": "' + process.env.LIVEDEALDERFRONTHOSTNAME + '",' +
+			'"MIN": "' + min + '",' +
+      '"ENV": "' + env + '",' +
+      '"SOCKETSERVERPORT": "' + process.env.LIVEDEALDERSOCKETSERVERPORT + '",' +
+			'"SOCKETSERVER": "' + process.env.LIVEDEALDERSOCKETSERVER + '"}'
+			, 'utf8');
 
-			self._modules.fs.mkdir('less', function() {
-				self._modules.fs.writeFile('less/app.less',`
-          /**
-           * for override less configuration
-           */
-				`, 'utf8');
-			});
+      /* check if app.less is exist */
+      self._modules.fs.exists('less/app.less', (exist) => {
+        if (!exist) {
+          self._modules.fs.mkdir('less', function() {
+            self._modules.fs.writeFile('less/app.less',`
+              /**
+               * for override less configuration
+               */
+            `, 'utf8');
+          });
+        }
+      });
 		});
 	}
 }
