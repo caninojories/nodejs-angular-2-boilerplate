@@ -30,11 +30,13 @@
        root + '/bower/**/*.js'
      ],
      assetsJS     : [
-       root + '/assets/**/*.js',
-       root + '/node_modules/rxjs/**/*.js'
+       root + '/assets/**/*.js'
      ],
      assetsAppTS : [
-       root + '/app/**/*.js'
+       root + '/app/**/*.js',
+       root + '/node_modules/ng2-translate/bundles/*.js',
+       root + '/node_modules/rxjs/**/*.js',
+       root + '/node_modules/@angular/**/*.min.js'
      ],
      css    : [
        'assets/css/bootstrap.css',

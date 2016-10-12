@@ -21,7 +21,14 @@ export class Prod {
       process.env.NODE_ENV = 'PRODUCTION';
       new Logger('Running Prod Environment');
 
-      this._modules.gulp.start('settings', 'inject', 'wiredep', 'less-compile-and-minify', 'uglify', 'html-min', 'useref');
+      this._modules
+      .runsequence(
+        'settings',
+        'uglify', function() {
+          new Logger('Finished...');
+      });
+
+      // this._modules.gulp.start('settings', 'inject', 'wiredep', 'less-compile-and-minify', 'uglify', 'html-min', 'useref');
     });
   }
 }

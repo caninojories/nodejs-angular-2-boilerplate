@@ -23,14 +23,13 @@
      'http',
      'platform-browser',
      'platform-browser-dynamic',
-     'upgrade',
      'forms',
      'router',
      'router-deprecated'
   ];
   // Bundled (~40 requests):
   function packUmd(pkgName) {
-    packages['@angular/'+pkgName] = { main: '/bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
+    packages['@angular/'+pkgName] = { main: '/bundles/' + pkgName + '.umd.min.js', defaultExtension: 'js' };
   }
   // Most environments should use UMD; some (Karma) need the individual index files
   var setPackageConfig = packUmd;

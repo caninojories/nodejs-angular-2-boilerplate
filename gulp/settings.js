@@ -1,5 +1,6 @@
 "use strict";
 var modules_1 = require('./modules');
+var logger_1 = require('./utilities/logger');
 var config = require('./../gulp.config')();
 /**
  * gulp settings --env=[DEV | PRODUCTION]
@@ -16,27 +17,35 @@ var Settings = (function () {
         var self = this;
         var min = 'min.';
         var env = 'PRODUCTION';
-        this._modules
-            .gulp.task('settings', function (done) {
-            if ((_this._modules.args.env === 'QA' || _this._modules.args.env === 'DEV' || !_this._modules.args.env) && process.env.NODE_ENV !== 'PRODUCTION') {
-                min = '';
-                env = 'DEV';
-            }
-            self._modules.fs.writeFile('app/shared/config.ts', 'export let CONFIG = {' +
-                '"HOSTNAME": "' + (process.env.LIVEDEALDERFRONTHOSTNAME || 'api ip here or domain') + '",' +
-                '"HOSTNAMEPORT": "' + (process.env.LIVEDEALDERHOSTNAMEPORT || 'api port here') + '",' +
-                '"HOSTNAMEVERSION": "' + (process.env.LIVEDEALDERHOSTNAMEVERSION || '/api/v1/') + '",' +
-                '"MIN": "' + min + '",' +
-                '"ENV": "' + env + '",' +
-                '"SOCKETSERVERPORT": "' + process.env.LIVEDEALDERSOCKETSERVERPORT + '",' +
-                '"SOCKETSERVER": "' + process.env.LIVEDEALDERSOCKETSERVER + '"}', 'utf8');
-            /* check if app.less is exist */
-            self._modules.fs.exists('less/app.less', function (exist) {
-                if (!exist) {
-                    self._modules.fs.mkdir('less', function () {
-                        self._modules.fs.writeFile('less/app.less', "\n              /**\n               * for override less configuration\n               */\n            ", 'utf8');
-                    });
+        return new Promise(function (resolve, reject) {
+            _this._modules
+                .gulp.task('settings', function (done) {
+                if ((_this._modules.args.env === 'QA' || _this._modules.args.env === 'DEV' || !_this._modules.args.env) && process.env.NODE_ENV !== 'PRODUCTION') {
+                    min = '';
+                    env = 'DEV';
                 }
+                self._modules.fs.writeFile('app/shared/config.ts', 'export let CONFIG = {' +
+                    '"HOSTNAME": "' + (process.env.LIVEDEALDERFRONTHOSTNAME || 'api ip here or domain') + '",' +
+                    '"HOSTNAMEPORT": "' + (process.env.LIVEDEALDERHOSTNAMEPORT || 'api port here') + '",' +
+                    '"HOSTNAMEVERSION": "' + (process.env.LIVEDEALDERHOSTNAMEVERSION || '/api/v1/') + '",' +
+                    '"MIN": "' + min + '",' +
+                    '"ENV": "' + env + '",' +
+                    '"SOCKETSERVERPORT": "' + process.env.LIVEDEALDERSOCKETSERVERPORT + '",' +
+                    '"SOCKETSERVER": "' + process.env.LIVEDEALDERSOCKETSERVER + '"}', 'utf8');
+                /* check if app.less is exist */
+                self._modules.fs.exists('less/app.less', function (exist) {
+                    if (!exist) {
+                        self._modules.fs.mkdir('less', function () {
+                            self._modules.fs.writeFile('less/app.less', "\n                /**\n                 * for override less configuration\n                 */\n              ", 'utf8');
+                        });
+                        new logger_1.Logger('Finish Settings');
+                        resolve();
+                    }
+                    else {
+                        new logger_1.Logger('Finish Settings');
+                        resolve();
+                    }
+                });
             });
         });
     };
