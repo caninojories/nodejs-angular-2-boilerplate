@@ -35,7 +35,9 @@ export class Settings {
 
 			self._modules.fs.writeFile('app/shared/config.ts',
 			'export let CONFIG = {' +
-			'"HOSTNAME": "' + process.env.LIVEDEALDERFRONTHOSTNAME + '",' +
+			'"HOSTNAME": "' + (process.env.LIVEDEALDERFRONTHOSTNAME || 'api ip here or domain') + '",' +
+      '"HOSTNAMEPORT": "' + (process.env.LIVEDEALDERHOSTNAMEPORT || 'api port here') + '",' +
+      '"HOSTNAMEVERSION": "' + (process.env.LIVEDEALDERHOSTNAMEVERSION || '/api/v1/') + '",' +
 			'"MIN": "' + min + '",' +
       '"ENV": "' + env + '",' +
       '"SOCKETSERVERPORT": "' + process.env.LIVEDEALDERSOCKETSERVERPORT + '",' +
