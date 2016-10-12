@@ -17,7 +17,10 @@ var Inject = (function () {
             new logger_1.Logger('Wire up .css and .js into the html');
             _this._modules
                 .runsequence('js', 'angular-dependencies', 'css', function () {
-                new logger_1.Logger('Finished...');
+                return new Promise(function (resolve, reject) {
+                    new logger_1.Logger('Inject task Finished...');
+                    resolve('success');
+                });
             });
         });
     };

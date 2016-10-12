@@ -56,9 +56,12 @@
        root + '/app/**/*.less',
        root + '/assets/**/*.less'
      ],
-     html   : [
-       root + '/app/**/*.html'
-     ],
+     html   : {
+       files: [
+         root + '/app/**/*.html'
+       ],
+       ignore: [root + '/app/**/min.*.html']
+     },
      client : 'app/',
      suffix : version
    };

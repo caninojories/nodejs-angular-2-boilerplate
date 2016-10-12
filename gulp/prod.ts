@@ -19,12 +19,16 @@ export class Prod {
     this._modules
     .gulp.task('prod-compile', _ => {
       process.env.NODE_ENV = 'PRODUCTION';
-      new Logger('Running Prod Environment');
 
       this._modules
       .runsequence(
         'settings',
-        'uglify', function() {
+        ['js', 'css', 'angular-dependencies'],
+        'wiredep',
+        ['uglify-assetsJs', 'uglify-appJs'],
+        'html-min',
+        'useref',
+        'less-compile-and-minify', function() {
           new Logger('Finished...');
       });
 

@@ -16,7 +16,10 @@ var Uglify = (function () {
             .gulp.task('uglify', function (_) {
             _this._modules
                 .runsequence('uglify-assetsJs', 'uglify-appJs', function () {
-                new logger_1.Logger('Finished...');
+                return new Promise(function (resolve, reject) {
+                    new logger_1.Logger('Finished...');
+                    resolve();
+                });
             });
         });
     };

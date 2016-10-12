@@ -18,18 +18,22 @@ export class Inject {
   private _modules = Modules.get();
 
   init() {
-    this._modules
-    .gulp.task('inject', _ => {
-      new Logger('Wire up .css and .js into the html');
 
       this._modules
-      .runsequence(
-        'js',
-        'angular-dependencies',
-        'css', function() {
-          new Logger('Finished...');
+      .gulp.task('inject', _ => {
+        new Logger('Wire up .css and .js into the html');
+
+        this._modules
+        .runsequence(
+          'js',
+          'angular-dependencies',
+          'css', function() {
+          return new Promise<any>((resolve, reject) => {
+            new Logger('Inject task Finished...');
+            resolve('success');
+          });
+        });
       });
-    });
   }
 
   js() {

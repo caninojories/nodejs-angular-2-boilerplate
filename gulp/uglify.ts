@@ -24,7 +24,10 @@ export class Uglify {
       .runsequence(
         'uglify-assetsJs',
         'uglify-appJs', function() {
-          new Logger('Finished...');
+          return new Promise<any>((resolve, reject) => {
+            new Logger('Finished...');
+            resolve();
+          });
       });
     });
   }

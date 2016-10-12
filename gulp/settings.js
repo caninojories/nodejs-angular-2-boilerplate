@@ -17,9 +17,9 @@ var Settings = (function () {
         var self = this;
         var min = 'min.';
         var env = 'PRODUCTION';
-        return new Promise(function (resolve, reject) {
-            _this._modules
-                .gulp.task('settings', function (done) {
+        this._modules
+            .gulp.task('settings', function (done) {
+            return new Promise(function (resolve, reject) {
                 if ((_this._modules.args.env === 'QA' || _this._modules.args.env === 'DEV' || !_this._modules.args.env) && process.env.NODE_ENV !== 'PRODUCTION') {
                     min = '';
                     env = 'DEV';
@@ -39,11 +39,11 @@ var Settings = (function () {
                             self._modules.fs.writeFile('less/app.less', "\n                /**\n                 * for override less configuration\n                 */\n              ", 'utf8');
                         });
                         new logger_1.Logger('Finish Settings');
-                        resolve();
+                        resolve('success');
                     }
                     else {
                         new logger_1.Logger('Finish Settings');
-                        resolve();
+                        resolve('success');
                     }
                 });
             });
