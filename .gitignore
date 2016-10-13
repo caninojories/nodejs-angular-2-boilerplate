@@ -16,6 +16,7 @@ typings/
 .map
 !clean.js
 !TS.js
+!system.config.js
 
 ##
 # Other

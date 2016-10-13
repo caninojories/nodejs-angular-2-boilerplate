@@ -24,8 +24,7 @@
      'platform-browser',
      'platform-browser-dynamic',
      'forms',
-     'router',
-     'router-deprecated'
+     'router'
   ];
   // Bundled (~40 requests):
   function packUmd(pkgName) {
