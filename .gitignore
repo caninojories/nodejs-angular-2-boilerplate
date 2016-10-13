@@ -10,10 +10,8 @@ npm*
 # Typings and Apps
 #
 typings/
-*.js
-.js
-*.map
-.map
+*js
+*map
 !clean.js
 !TS.js
 !system.config.js
