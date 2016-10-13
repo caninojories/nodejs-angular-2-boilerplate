@@ -6,8 +6,6 @@ import {
 } from './utilities/logger';
 import * as Errors from './utilities/errors';
 
-let config = require('./../gulp.config')();
-
 export class Prod {
   constructor() {
     this.init();
@@ -23,7 +21,7 @@ export class Prod {
       this._modules
       .runsequence(
         'settings',
-        ['js', 'css', 'angular-dependencies'],
+        'inject',
         'wiredep',
         ['uglify-assetsJs', 'uglify-appJs'],
         'html-min',
@@ -31,8 +29,6 @@ export class Prod {
         'less-compile-and-minify', function() {
           new Logger('Finished...');
       });
-
-      // this._modules.gulp.start('settings', 'inject', 'wiredep', 'less-compile-and-minify', 'uglify', 'html-min', 'useref');
     });
   }
 }

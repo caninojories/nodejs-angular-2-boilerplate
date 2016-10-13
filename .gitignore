@@ -75,5 +75,7 @@ back/app.server.js
 back/app.server.js.map
 gulpfile.js
 gulpfile.js.map
+gulp.config.js
+gulp.config.js.map
 inject.js
 inject.js.map

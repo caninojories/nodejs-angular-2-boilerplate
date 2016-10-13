@@ -1,7 +1,7 @@
 "use strict";
 var modules_1 = require('./modules');
 var logger_1 = require('./utilities/logger');
-var config = require('./../gulp.config')();
+var gulp = require('../gulp.config');
 var Useref = (function () {
     function Useref() {
         this.init();
@@ -15,7 +15,7 @@ var Useref = (function () {
             return modules_1.Modules
                 .get()
                 .gulp
-                .src(config.index)
+                .src(gulp.config.index)
                 .pipe(modules_1.Modules.get().$.useref({
                 searchPath: [''],
                 base: process.cwd(),

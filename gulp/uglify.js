@@ -2,7 +2,7 @@
 var modules_1 = require('./modules');
 var logger_1 = require('./utilities/logger');
 var Errors = require('./utilities/errors');
-var config = require('./../gulp.config')();
+var gulp = require('../gulp.config');
 var Uglify = (function () {
     function Uglify() {
         this._modules = modules_1.Modules.get();
@@ -27,8 +27,8 @@ var Uglify = (function () {
         var self = this;
         this._modules
             .gulp.task('uglify-assetsJs', function () {
-            new logger_1.Logger('Uglifying Assets ---> JS');
-            config.assetsJS.forEach(function (file) {
+            gulp.config.assetsJS.forEach(function (file) {
+                new logger_1.Logger('Uglifying Assets ---> JS ' + file);
                 self._modules.glob(file, {}, function (er, files) {
                     files.forEach(function (item) {
                         if (item.indexOf('min') !== -1) {
@@ -59,8 +59,8 @@ var Uglify = (function () {
         var self = this;
         this._modules
             .gulp.task('uglify-appJs', function () {
-            new logger_1.Logger('Uglifying  Assets-App-TS ---> JS');
-            config.assetsAppTS.forEach(function (file) {
+            gulp.config.assetsAppTS.forEach(function (file) {
+                new logger_1.Logger('Uglifying  Assets-App-TS ---> JS ' + file);
                 self._modules.glob(file, {}, function (er, files) {
                     files.forEach(function (item) {
                         var position = item.lastIndexOf('/');

@@ -5,8 +5,7 @@ import {
   Logger
 } from './utilities/logger';
 import * as Errors from './utilities/errors';
-
-let config = require('./../gulp.config')();
+import * as gulp  from '../gulp.config';
 
 export class HtmlMin {
   constructor() {
@@ -22,8 +21,8 @@ export class HtmlMin {
       new Logger('Uglifying ---> HTML');
 
       return new Promise<any>((resolve, reject) => {
-        config.html.files.forEach(function(file) {
-          self._modules.glob(file, {ignore: config.html.ignore}, function (er, files) {
+        gulp.config.html.files.forEach(function(file) {
+          self._modules.glob(file, {ignore: gulp.config.html.ignore}, function (er, files) {
             let length  = files.length;
             let counter = 0;
 

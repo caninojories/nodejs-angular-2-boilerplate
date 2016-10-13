@@ -6,8 +6,6 @@ import {
 } from './utilities/logger';
 import * as Errors from './utilities/errors';
 
-let config = require('./../gulp.config')();
-
 /**
  * gulp settings --env=[DEV | PRODUCTION]
  * --env is optional

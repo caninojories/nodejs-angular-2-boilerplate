@@ -4,8 +4,7 @@ import {
 import {
   Logger
 } from './utilities/logger';
-
-let config = require('./../gulp.config')();
+import * as gulp  from '../gulp.config';
 
 export class Useref  {
   constructor() {
@@ -22,7 +21,7 @@ export class Useref  {
       return Modules
       .get()
       .gulp
-      .src(config.index)
+      .src(gulp.config.index)
       .pipe(Modules.get().$.useref({
         searchPath: [''],
         base: process.cwd(),

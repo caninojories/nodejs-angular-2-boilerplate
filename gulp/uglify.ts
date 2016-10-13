@@ -5,8 +5,7 @@ import {
   Logger
 } from './utilities/logger';
 import * as Errors from './utilities/errors';
-
-let config = require('./../gulp.config')();
+import * as gulp  from '../gulp.config';
 
 export class Uglify {
   constructor() {
@@ -36,9 +35,9 @@ export class Uglify {
     let self = this;
     this._modules
     .gulp.task('uglify-assetsJs', function () {
-      new Logger('Uglifying Assets ---> JS');
+      gulp.config.assetsJS.forEach((file) => {
+        new Logger('Uglifying Assets ---> JS ' + file);
 
-      config.assetsJS.forEach((file) => {
         self._modules.glob(file, {}, function (er, files) {
           files.forEach(function(item) {
             if (item.indexOf('min') !== -1) {
@@ -72,9 +71,10 @@ export class Uglify {
     let self = this;
     this._modules
     .gulp.task('uglify-appJs', function() {
-      new Logger('Uglifying  Assets-App-TS ---> JS');
 
-      config.assetsAppTS.forEach(function(file) {
+      gulp.config.assetsAppTS.forEach(function(file) {
+        new Logger('Uglifying  Assets-App-TS ---> JS ' + file);
+
         self._modules.glob(file, {}, function (er, files) {
           files.forEach(function(item) {
             let position = item.lastIndexOf('/');
