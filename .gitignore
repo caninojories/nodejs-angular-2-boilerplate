@@ -10,8 +10,16 @@ npm*
 # Typings and Apps
 #
 typings/
-*.js
-*.map
+back/**/*.js
+back/**/*.js.map
+app/**/*.js
+app/**/*.js.map
+gulp/**/*.js
+gulp/**/*.js.map
+gulpfile.js
+gulpfile.js.map
+gulp.config.js
+gulp.config.js.map
 !clean.js
 !TS.js
 !system.config.js

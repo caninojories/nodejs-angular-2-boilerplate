@@ -1,8 +1,8 @@
 import * as express from 'express';
-import * as Const from './config/const';
+import * as Const from './appconfig/const';
 import {Api} from './api';
-import {ExpressConfig} from './config/express';
-import {Modules} from './config/modules';
+import {ExpressConfig} from './appconfig/express';
+import {Modules} from './appconfig/modules';
 
 /**
  * The server.
@@ -40,7 +40,7 @@ export class Server {
     //create expressjs application
     this._app            = express();
     this._router         = express.Router();
-    this._expressConfig  = new ExpressConfig(this._app, this._router);
+    this._expressConfig  = new ExpressConfig(this._app);
     this._api            = new Api(this._app);
     this._expressConfig.loadExpressConfig();
 

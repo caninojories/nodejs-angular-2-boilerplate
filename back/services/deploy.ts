@@ -4,7 +4,7 @@ import {
 } from './loopromise';
 import {
   Modules
-} from '../config/modules';
+} from '../appconfig/modules';
 import {
   Logger
 } from './logger';

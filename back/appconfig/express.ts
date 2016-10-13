@@ -4,7 +4,7 @@ import {Logger} from '../services/logger';
 import {Modules} from './modules';
 
 export class ExpressConfig {
-  constructor(private _app : any /*express.Application*/, private _router: any /*express.Router*/) {}
+  constructor(private _app : any /*express.Application*/) {}
 
   private _modules = Modules.get();
 
@@ -124,19 +124,8 @@ export class ExpressConfig {
 
       next();
     });
-    // console.log(this._router.get());
-    // let router = new Routes().init();
-    this._router.use(function timeLog (req, res, next) {
-      console.log('Time: ', Date.now());
-      next();
-    });
 
-    this._router.get('/', function(req, res) {
-      res.render('index.html')
-    });
     this._app.use('*', router);
-
-    // console.log(router);
 
     this._app.listen(Const.port, () => {
       console.log(this._modules.chalk.red.reset.underline('listening to port ') +

@@ -1,4 +1,4 @@
-import {Modules} from '../config/modules';
+import {Modules} from '../appconfig/modules';
 
 export class Logger {
 	private _modules = Modules.get();

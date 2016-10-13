@@ -1,6 +1,6 @@
 "use strict";
 var loopromise_1 = require('./loopromise');
-var modules_1 = require('../config/modules');
+var modules_1 = require('../appconfig/modules');
 var logger_1 = require('./logger');
 var Deploy = (function () {
     function Deploy() {
