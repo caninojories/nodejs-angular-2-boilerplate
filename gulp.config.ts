@@ -1,4 +1,4 @@
-import * as Const from './back/config/const';
+sfsimport * as Const from './back/config/const';
 /*
  * wiredep and bower settings
  */

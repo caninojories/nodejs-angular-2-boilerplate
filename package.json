@@ -8,6 +8,7 @@
     "required": "typings install && npm install && bower install",
     "dev-compile": "tsc 2>&1 && gulp settings && tsc && gulp dev-compile && tsc",
     "prod-compile": "tsc 2>&1 && gulp settings && tsc && gulp prod-compile && tsc",
+    "gitadd": "rm -rf gulpfile.js gulp.config.js && git add .",
     "app": "pm2 start back/app.server.js -o ~/LOGS/.appoutput -e ~/LOGS/.apperror --name APP -i",
     "useforwindowcompilation": "",
     "windows-compile": "gulp less-compile-and-minify && gulp assetsJs && gulp appJs && gulp html-min && tsc"
