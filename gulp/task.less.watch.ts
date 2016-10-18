@@ -18,7 +18,7 @@ export class LessWatch {
     let self = this;
 
     this._modules.gulp.task('less-watch', _ => {
-      self._modules.$.watch(gulp.config.less, (buffer) => {
+      self._modules.$.watch(gulp.config().less, (buffer) => {
         let src       = buffer['history'][0];
         let position  = buffer['history'][0].lastIndexOf('/');
         let dest      = buffer['history'][0].substr(0, position + 1);

@@ -19,14 +19,14 @@ export class Uglify {
   init() {
     this._modules
     .gulp.task('uglify', _ => {
-      this._modules
-      .runsequence(
-        'uglify-assetsJs',
-        'uglify-appJs', function() {
-          return new Promise<any>((resolve, reject) => {
+      return new Promise<any>((resolve, reject) => {
+        this._modules
+        .runsequence(
+          'uglify-assetsJs',
+          'uglify-appJs', function() {
             new Logger('Finished...');
             resolve();
-          });
+        });
       });
     });
   }
@@ -35,7 +35,7 @@ export class Uglify {
     let self = this;
     this._modules
     .gulp.task('uglify-assetsJs', function () {
-      gulp.config.assetsJS.forEach((file) => {
+      gulp.config().assetsJS.forEach((file) => {
         new Logger('Uglifying Assets ---> JS ' + file);
 
         self._modules.glob(file, {}, function (er, files) {
@@ -72,7 +72,7 @@ export class Uglify {
     this._modules
     .gulp.task('uglify-appJs', function() {
 
-      gulp.config.assetsAppTS.forEach(function(file) {
+      gulp.config().assetsAppTS.forEach(function(file) {
         new Logger('Uglifying  Assets-App-TS ---> JS ' + file);
 
         self._modules.glob(file, {}, function (er, files) {

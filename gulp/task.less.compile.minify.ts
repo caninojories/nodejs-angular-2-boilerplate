@@ -24,7 +24,7 @@ export class LessCompileAndMinify {
     this._modules.gulp.task('less-compile-and-minify'/*minify using cleancss*/, _ => {
 
       return new Promise<any>((resolve, reject) => {
-        gulp.config.less.forEach(function(file) {
+        gulp.config().less.forEach(function(file) {
           new Logger('Compiling Less ---> Css for the glob ' + file);
 
           self._modules

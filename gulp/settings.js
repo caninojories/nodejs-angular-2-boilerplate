@@ -1,6 +1,6 @@
 "use strict";
-var modules_1 = require('./modules');
-var logger_1 = require('./utilities/logger');
+var modules_1 = require("./modules");
+var logger_1 = require("./utilities/logger");
 /**
  * gulp settings --env=[DEV | PRODUCTION]
  * --env is optional

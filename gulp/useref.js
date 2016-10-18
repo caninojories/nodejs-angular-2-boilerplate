@@ -1,7 +1,7 @@
 "use strict";
-var modules_1 = require('./modules');
-var logger_1 = require('./utilities/logger');
-var gulp = require('../gulp.config');
+var modules_1 = require("./modules");
+var logger_1 = require("./utilities/logger");
+var gulp = require("../gulp.config");
 var Useref = (function () {
     function Useref() {
         this.init();
@@ -24,7 +24,17 @@ var Useref = (function () {
                     return path;
                 }
             }))
-                .pipe(modules_1.Modules.get().$.if('*.js', modules_1.Modules.get().$.uglify()))
+                .pipe(modules_1.Modules.get().$.if('*.js', modules_1.Modules.get().$.uglify({
+                mangle: false,
+                output: {
+                    bracketize: true
+                },
+                compressor: {
+                    properties: false,
+                    booleans: false
+                }
+            })))
+                .pipe(modules_1.Modules.get().$.if('*.css', modules_1.Modules.get().$.cleanCss({ compatibility: 'ie8' })))
                 .pipe(modules_1.Modules.get().gulp.dest('dist'));
         });
     };

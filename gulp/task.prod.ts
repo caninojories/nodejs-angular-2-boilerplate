@@ -23,7 +23,7 @@ export class Prod {
         'settings',
         'inject',
         'wiredep',
-        ['uglify-assetsJs', 'uglify-appJs'],
+        'uglify',
         'html-min',
         'useref',
         'less-compile-and-minify', function() {

@@ -21,8 +21,8 @@ export class HtmlMin {
       new Logger('Uglifying ---> HTML');
 
       return new Promise<any>((resolve, reject) => {
-        gulp.config.html.files.forEach(function(file) {
-          self._modules.glob(file, {ignore: gulp.config.html.ignore}, function (er, files) {
+        gulp.config().html.files.forEach(function(file) {
+          self._modules.glob(file, {ignore: gulp.config().html.ignore}, function (er, files) {
             let length  = files.length;
             let counter = 0;
 

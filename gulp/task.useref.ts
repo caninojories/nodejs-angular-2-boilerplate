@@ -21,7 +21,7 @@ export class Useref  {
       return Modules
       .get()
       .gulp
-      .src(gulp.config.index)
+      .src(gulp.config().index)
       .pipe(Modules.get().$.useref({
         searchPath: [''],
         base: process.cwd(),
@@ -30,7 +30,17 @@ export class Useref  {
           return path;
         }
       }))
-      .pipe(Modules.get().$.if('*.js', Modules.get().$.uglify()))
+      .pipe(Modules.get().$.if('*.js', Modules.get().$.uglify({
+        mangle: false,
+        output: {
+          bracketize: true
+        },
+        compressor: {
+          properties: false,
+          booleans: false
+        }
+      })))
+      .pipe(Modules.get().$.if('*.css', Modules.get().$.cleanCss({compatibility: 'ie8'})))
       .pipe(Modules.get().gulp.dest('dist'))
     });
   }

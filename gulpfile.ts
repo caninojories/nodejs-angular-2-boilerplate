@@ -1,33 +1,33 @@
 import {
   Inject
-} from './gulp/inject';
+} from './gulp/task.inject';
 import {
   LessCompileAndMinify
-} from './gulp/less.compile.minify';
+} from './gulp/task.less.compile.minify';
 import {
   LessWatch
-} from './gulp/less.watch';
+} from './gulp/task.less.watch';
 import {
   Settings
-} from './gulp/settings';
+} from './gulp/task.settings';
 import {
   Uglify
-} from './gulp/uglify';
+} from './gulp/task.uglify';
 import {
   Wiredep
-} from './gulp/wiredep';
+} from './gulp/task.wiredep';
 import {
   HtmlMin
-} from './gulp/html.min';
+} from './gulp/task.html.min';
 import {
   Useref
-} from './gulp/useref';
+} from './gulp/task.useref';
 import {
   Dev
-} from './gulp/dev';
+} from './gulp/task.dev';
 import {
   Prod
-} from './gulp/prod';
+} from './gulp/task.prod';
 
 
 export class GulpFile {

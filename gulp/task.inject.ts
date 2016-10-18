@@ -41,14 +41,14 @@ export class Inject {
       new Logger('Injecting js into our html');
 
       return self._modules.gulp
-      .src(gulp.config.index)
-      .pipe(self._modules.$.inject(self._modules.gulp.src(gulp.config.js, {read: false}), {
+      .src(gulp.config().index)
+      .pipe(self._modules.$.inject(self._modules.gulp.src(gulp.config().js, {read: false}), {
         addPrefix: '',
-        addSuffix: gulp.config.suffix,
+        addSuffix: gulp.config().suffix,
         addRootSlash: true
       }))
       /*inject it to our client view*/
-      .pipe(self._modules.gulp.dest(gulp.config.client));
+      .pipe(self._modules.gulp.dest(gulp.config().client));
     });
   }
 
@@ -59,14 +59,22 @@ export class Inject {
     .gulp.task('css', function() {
       new Logger('Injecting css into our html');
 
+      /* test if the process env*/
+      let isProd;
+      let isDev;
+      if (process.env.NODE_ENV === 'PRODUCTION') {
+        isProd  = '!'
+        isDev   = ''
+      }
+
       return self._modules.gulp
-      .src(gulp.config.index)
-      .pipe(self._modules.$.inject(self._modules.gulp.src(gulp.config.css, {read: false}), {
+      .src(gulp.config().index)
+      .pipe(self._modules.$.inject(self._modules.gulp.src(gulp.config().css, {read: false}), {
         addPrefix: '',
-        addSuffix: gulp.config.suffix,
+        addSuffix: gulp.config().suffix,
         addRootSlash: true
       }))
-      .pipe(self._modules.gulp.dest(gulp.config.client));
+      .pipe(self._modules.gulp.dest(gulp.config().client));
     });
   }
 
@@ -77,15 +85,15 @@ export class Inject {
     .gulp.task('angular-dependencies', function() {
       new Logger('Injecting Angular 2 Modules into our html');
       return self._modules.gulp
-      .src(gulp.config.index)
-      .pipe(self._modules.$.inject(self._modules.gulp.src(gulp.config.angularDependencies, {read: false}), {
+      .src(gulp.config().index)
+      .pipe(self._modules.$.inject(self._modules.gulp.src(gulp.config().angularDependencies, {read: false}), {
         addPrefix: '',
-        addSuffix: gulp.config.suffix,
+        addSuffix: gulp.config().suffix,
         addRootSlash: true,
         starttag: '<!-- inject:angular-dependencies -->'
       }))
         /*inject it to our client view*/
-      .pipe(self._modules.gulp.dest(gulp.config.client));
+      .pipe(self._modules.gulp.dest(gulp.config().client));
     });
   }
 }

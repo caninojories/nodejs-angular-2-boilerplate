@@ -1,8 +1,8 @@
 "use strict";
-var modules_1 = require('./modules');
-var logger_1 = require('./utilities/logger');
-var Errors = require('./utilities/errors');
-var gulp = require('../gulp.config');
+var modules_1 = require("./modules");
+var logger_1 = require("./utilities/logger");
+var Errors = require("./utilities/errors");
+var gulp = require("../gulp.config");
 var Uglify = (function () {
     function Uglify() {
         this._modules = modules_1.Modules.get();
@@ -14,9 +14,9 @@ var Uglify = (function () {
         var _this = this;
         this._modules
             .gulp.task('uglify', function (_) {
-            _this._modules
-                .runsequence('uglify-assetsJs', 'uglify-appJs', function () {
-                return new Promise(function (resolve, reject) {
+            return new Promise(function (resolve, reject) {
+                _this._modules
+                    .runsequence('uglify-assetsJs', 'uglify-appJs', function () {
                     new logger_1.Logger('Finished...');
                     resolve();
                 });

@@ -7,7 +7,7 @@
     "global": "npm install nodemon -g && npm install bower -g && npm install gulp -g && npm install typings -g && npm install typescript -g && npm install pm2 -g",
     "required": "typings install && npm install && bower install",
     "dev-compile": "tsc 2>&1 && gulp settings && tsc && gulp dev-compile && tsc",
-    "prod-compile": "tsc 2>&1 && gulp settings && tsc && gulp prod-compile && tsc",
+    "prod-compile": "tsc 2>&1 && gulp settings && tsc && gulp prod-compile",
     "gitadd": "rm -rf gulpfile.js gulp.config.js && git add .",
     "app": "pm2 start back/app.server.js -o ~/LOGS/.appoutput -e ~/LOGS/.apperror --name APP -i",
     "useforwindowcompilation": "",
