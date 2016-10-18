@@ -22,7 +22,7 @@ gulp.config.js
 gulp.config.js.map
 !clean.js
 !TS.js
-!system.config.js
+!app/**/system.config.js
 
 ##
 # Other
