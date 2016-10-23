@@ -13,9 +13,6 @@ import {
 import {
   FormsModule
 } from '@angular/forms';
-import {
-  TranslateModule, TranslateService, TranslateLoader, TranslateStaticLoader
-} from 'ng2-translate/ng2-translate';
 
 /* Components */
 import {
@@ -50,17 +47,12 @@ import {
 @NgModule({
   imports: [
     BrowserModule,
-    TranslateModule.forRoot({
-      provide: TranslateLoader,
-      useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
-      deps: [Http]
-    }),
     SharedModule,
     rootRouting,
     IndexModule,
     LobbyModule
   ],
-  exports: [TranslateModule],
+  exports: [],
   declarations: [
     AppComponent,
     PageNotFoundComponent

@@ -29,7 +29,6 @@ export let config = (isDev = '!', isProd = '') => {
     ],
     assetsAppTS : [
       Const.root + 'app/**/*.js',
-      Const.root + 'node_modules/ng2-translate/bundles/*.js',
       Const.root + 'node_modules/rxjs/**/*.js',
       Const.root + 'node_modules/@angular/**/*.min.js'
     ],

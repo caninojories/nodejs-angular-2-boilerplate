@@ -8,13 +8,11 @@
     'app':                        '/app', // 'dist',
     '@angular':                   '/node_modules/@angular',
     'rxjs':                       '/node_modules/rxjs',
-    'ng2-translate':              '/node_modules/ng2-translate/bundles'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
     'app':                        { main: 'main.js',  defaultExtension: 'js' },
-    'rxjs':                       { defaultExtension: 'js' },
-    'ng2-translate':              { defaultExtension: 'js' }
+    'rxjs':                       { defaultExtension: 'js' }
   };
   var ngPackageNames = [
      'common',
