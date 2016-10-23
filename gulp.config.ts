@@ -59,6 +59,9 @@ export let config = (isDev = '!', isProd = '') => {
       ],
       ignore: [Const.root + 'app/**/min.*.html']
     },
+    copy   : {
+      files: Const.root + 'assets/img/**'
+    },
     client : 'app/',
     suffix : version,
     getWireDepDefaultOptions : function() {

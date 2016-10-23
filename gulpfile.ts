@@ -20,6 +20,9 @@ import {
   HtmlMin
 } from './gulp/task.html.min';
 import {
+  Copy
+} from './gulp/task.copy';
+import {
   Useref
 } from './gulp/task.useref';
 import {
@@ -40,6 +43,7 @@ export class GulpFile {
   private _uglify     = new Uglify();
   private _wiredep    = new Wiredep();
   private _htmlMin    = new HtmlMin();
+  private _copy       = new Copy();
   private _useref     = new Useref();
   private _lessCompileAndMinify = new LessCompileAndMinify();
 }

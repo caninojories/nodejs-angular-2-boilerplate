@@ -23,9 +23,9 @@ export class Prod {
         'settings',
         'inject',
         'wiredep',
-        'uglify',
         'html-min',
         'useref',
+        'copy',
         'less-compile-and-minify', function() {
           new Logger('Finished...');
       });
