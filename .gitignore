@@ -16,12 +16,12 @@ app/**/*.js
 app/**/*.js.map
 gulp/**/*.js
 gulp/**/*.js.map
+!gulp/**/clean.js
+!gulp/**/TS.js
 gulpfile.js
 gulpfile.js.map
 gulp.config.js
 gulp.config.js.map
-!clean.js
-!TS.js
 !app/**/system.config.js
 
 ##

@@ -24,9 +24,14 @@ export let config = (isDev = '!', isProd = '') => {
     assetsBowerJS : [
       Const.root + 'bower/**/*.js'
     ],
-    assetsJS     : [
-      Const.root + 'assets/**/*.js'
-    ],
+    assetsJS     : {
+      files: [
+        Const.root + 'assets/**/*.js',
+      ],
+      ignore: [
+        Const.root + 'assets/**/min.*.js',
+      ]
+    },
     assetsAppTS : [
       Const.root + 'app/**/*.js',
       Const.root + 'node_modules/rxjs/**/*.js',
@@ -34,8 +39,8 @@ export let config = (isDev = '!', isProd = '') => {
     ],
     /*inject css*/
     css    : [
-      isProd + 'assets/css/bootstrap.css',
-      isDev + 'assets/css/bootstrap.css'
+      'assets/css/*.css',
+      '!assets/css/min.*.css'
     ],
     /*inject js*/
     js     : [

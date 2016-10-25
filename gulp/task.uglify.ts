@@ -35,7 +35,7 @@ export class Uglify {
     let self = this;
     this._modules
     .gulp.task('uglify-assetsJs', function () {
-      gulp.config().assetsJS.forEach((file) => {
+      gulp.config().assetsJS.files.forEach((file) => {
         new Logger('Uglifying Assets ---> JS ' + file);
 
         self._modules.glob(file, {}, function (er, files) {
