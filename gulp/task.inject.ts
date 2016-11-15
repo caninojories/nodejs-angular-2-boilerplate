@@ -44,6 +44,7 @@ export class Inject {
       .src(gulp.config().index)
       .pipe(self._modules.$.inject(self._modules.gulp.src(gulp.config().js, {read: false}), {
         addPrefix: '',
+        ignorePath: 'assets',
         addSuffix: gulp.config().suffix,
         addRootSlash: true
       }))
@@ -71,6 +72,7 @@ export class Inject {
       .src(gulp.config().index)
       .pipe(self._modules.$.inject(self._modules.gulp.src(gulp.config().css, {read: false}), {
         addPrefix: '',
+        ignorePath: 'assets',
         addSuffix: gulp.config().suffix,
         addRootSlash: true
       }))

@@ -19,7 +19,14 @@ export class Dev {
       process.env.NODE_ENV = 'DEV';
       new Logger('Running Dev Environment');
 
-      this._modules.gulp.start('settings', 'inject', 'wiredep', 'less-compile-and-minify');
+      this._modules
+      .runsequence(
+        'settings',
+        'inject',
+        'wiredep',
+        'less-compile-and-minify', function() {
+          new Logger('Finished...');
+      });
     });
   }
 }

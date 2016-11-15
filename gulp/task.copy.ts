@@ -21,7 +21,8 @@ export class Copy {
 
       return this._modules.gulp
       .src(gulp.config().copy.files)
-      .pipe(this._modules.gulp.dest('dist/assets/img/'))
+      .pipe(this._modules.$.imagemin())
+      .pipe(this._modules.gulp.dest('dist/img/'))
     });
   }
 }
