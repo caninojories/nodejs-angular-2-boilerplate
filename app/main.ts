@@ -35,11 +35,8 @@ import {
    rootRouting
  } from './components/root.route.component';
 
-/*module*/
-import {
-  LobbyModule
-} from './components/lobby/lobby.module.component';
-/*module*/
+
+/* module */
 import {
   IndexModule
 } from './components/index/index.module.component';
@@ -49,8 +46,7 @@ import {
     BrowserModule,
     SharedModule,
     rootRouting,
-    IndexModule,
-    LobbyModule
+    IndexModule
   ],
   exports: [],
   declarations: [

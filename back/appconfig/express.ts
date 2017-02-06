@@ -159,6 +159,20 @@ export class ExpressConfig {
         next();
       }
     });
+
+    /* timeout for api */
+    this._app.use(function(req, res, next) {
+      res.setTimeout(5000, function() {
+        console.log('Request has timed out.');
+        res.status(408)
+        .send({
+          code    : 0,
+          message : 'Request has timed out.'
+        });
+      });
+
+      next();
+    });
   }
 
   loadExpressMiddleware() {

@@ -5,14 +5,14 @@ node_modules/
 bower/
 *.log
 npm*
+null
 
 ##
 # Typings and Apps
 #
 typings/
-back/**/*.js
-back/**/*.js.map
-app/**/*.js
+**/*.js
+**/*.js.map
 app/**/*.js.map
 gulp/**/*.js
 gulp/**/*.js.map
