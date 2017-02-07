@@ -1,5 +1,6 @@
 import {
-  NgModule
+  NgModule,
+  CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
 import {
   FormsModule
@@ -16,6 +17,9 @@ import {
 import {
   SharedModule
 } from '../commons/shared.component';
+import {
+  PropertyFinderApi
+} from '../../shared/propertyfinder';
 
 import {lobbyRouting } from './index.routing.component';
 
@@ -28,6 +32,7 @@ import {lobbyRouting } from './index.routing.component';
     IndexMainComponent,
     IndexComponent
   ],
-  providers: []
+  providers: [PropertyFinderApi],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class IndexModule {}
